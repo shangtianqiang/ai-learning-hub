@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0f5f5c">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230f5f5c'/%3E%3Ctext x='16' y='23' font-size='19' font-family='sans-serif' font-weight='700' fill='white' text-anchor='middle'%3E%E6%99%BA%3C/text%3E%3C/svg%3E">
+<title>学习工作台 · 智学 AI</title>
+<meta name="description" content="智学 AI 学习工作台：课程库、学习路径、练习测验与进度追踪。">
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body>
+
+<div class="app-shell">
+  <!-- 侧边栏 -->
+  <aside class="sidebar">
+    <div class="sb-brand">
+      <span class="sb-logo">智</span>
+      <div>
+        <div class="sb-name">智学 AI</div>
+      </div>
+    </div>
+
+    <nav class="sb-nav" id="sbNav"></nav>
+
+    <div class="sb-foot">
+      <div class="sb-level" id="sbLevel"></div>
+      <button class="sb-reset" id="sbReset">重置学习进度</button>
+    </div>
+  </aside>
+
+  <div class="side-scrim" id="sideScrim"></div>
+
+  <!-- 主区域 -->
+  <div class="main">
+    <header class="topbar">
+      <button class="menu-btn" id="menuBtn" aria-label="打开菜单" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <div class="tb-left">
+        <div class="tb-title" id="pageTitle">学习概览</div>
+      </div>
+      <div class="tb-right">
+        <button class="search-trigger" data-open-search aria-label="搜索课程与课时" aria-keyshortcuts="Control+K">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <span class="lbl">搜索</span>
+          <span class="k">⌘K</span>
+        </button>
+        <span class="streak-chip">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c1 3-1 4-2 6s0 3 0 3-2-1-2-3c-1.5 2-2 3.5-2 5a6 6 0 0 0 12 0c0-4-3-6-6-11z"/></svg>
+          连续 <span id="streakNum">0</span> 天
+        </span>
+        <a class="back-home btn btn-outline btn-sm" href="index.html">返回门户</a>
+      </div>
+    </header>
+
+    <main class="content" id="content"></main>
+  </div>
+</div>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/store.js"></script>
+<script src="assets/js/engine.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>

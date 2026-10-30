@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0f5f5c">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230f5f5c'/%3E%3Ctext x='16' y='23' font-size='19' font-family='sans-serif' font-weight='700' fill='white' text-anchor='middle'%3E%E6%99%BA%3C/text%3E%3C/svg%3E">
+<title>界面优化与端到端测试报告 · 智学 AI</title>
+<style>
+  :root {
+    --brand: #0f5f5c;
+    --brand-deep: #0a4745;
+    --brand-soft: #eef4f3;
+    --brand-line: #cfe0dd;
+    --paper: #ffffff;
+    --paper-2: #f7f8f8;
+    --paper-3: #f1f3f3;
+    --ink: #181b20;
+    --ink-2: #3a4048;
+    --muted: #6a727c;
+    --faint: #8b939d;
+    --line: #e6e8ea;
+    --line-2: #d5d9dc;
+    --ok: #1c7a4d;
+    --ok-soft: #eef5f0;
+    --err: #b3352c;
+    --err-soft: #faf0ee;
+    --warn: #92580f;
+    --warn-soft: #faf5ec;
+    --mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    --r: 7px;
+    --r-sm: 5px;
+    --r-xs: 3px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+      "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+    color: var(--ink); background: var(--paper-2); line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--brand); text-decoration: none; border-bottom: 1px solid transparent; }
+  a:hover { border-bottom-color: var(--brand); }
+  .page { max-width: 1120px; margin: 0 auto; background: var(--paper); border-left: 1px solid var(--line); border-right: 1px solid var(--line); }
+  .top {
+    display: flex; align-items: center; justify-content: space-between; gap: 20px;
+    padding: 18px 48px; border-bottom: 1px solid var(--line); flex-wrap: wrap;
+  }
+  .brand { display: flex; align-items: center; gap: 11px; }
+  .logo {
+    width: 32px; height: 32px; border-radius: var(--r-sm); background: var(--brand);
+    color: #fff; display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: 700; flex-shrink: 0;
+  }
+  .brand b { font-size: 15px; line-height: 1.3; display: block; }
+  .brand span { font-family: var(--mono); font-size: 9px; letter-spacing: 1.2px; color: var(--faint); display: block; }
+  .top-meta { font-family: var(--mono); font-size: 11px; color: var(--faint); letter-spacing: .3px; }
+  .head { padding: 54px 48px 38px; border-bottom: 1px solid var(--line); }
+  .kicker { font-family: var(--mono); font-size: 11px; letter-spacing: 1.2px; color: var(--faint); }
+  .head h1 { font-size: 40px; line-height: 1.3; letter-spacing: -.6px; margin: 16px 0 14px; }
+  .head h1 em { font-style: normal; color: var(--brand); }
+  .lead { font-size: 15px; color: var(--muted); max-width: 760px; line-height: 1.95; }
+  .head-facts { display: flex; gap: 28px; flex-wrap: wrap; margin-top: 26px; font-size: 12px; color: var(--muted); }
+  .head-facts b { font-family: var(--mono); font-weight: 600; color: var(--brand); margin-right: 5px; }
+  .kpis { display: grid; grid-template-columns: repeat(5, 1fr); border-bottom: 1px solid var(--line); }
+  .kpi { padding: 22px 18px 20px; border-right: 1px solid var(--line); }
+  .kpi:last-child { border-right: none; }
+  .kpi:first-child { padding-left: 48px; }
+  .kpi:last-child { padding-right: 48px; }
+  .kpi .v { font-family: var(--mono); font-size: 28px; font-weight: 600; line-height: 1.2; letter-spacing: -.5px; }
+  .kpi .v small { font-size: 13px; font-weight: 400; color: var(--faint); }
+  .kpi .l { font-size: 12px; color: var(--muted); margin-top: 5px; }
+  .kpi .s { font-size: 10.5px; color: var(--faint); margin-top: 2px; font-family: var(--mono); }
+  .kpi.ok .v { color: var(--ok); }
+  .body { padding: 0 48px 64px; }
+  .section { padding-top: 46px; }
+  .sec-head { display: flex; align-items: baseline; gap: 14px; padding-bottom: 12px; border-bottom: 1px solid var(--line); margin-bottom: 22px; }
+  .sec-no { font-family: var(--mono); font-size: 11px; color: var(--faint); letter-spacing: .5px; flex-shrink: 0; }
+  .sec-head h2 { font-size: 21px; letter-spacing: -.2px; line-height: 1.4; }
+  .sec-head p { font-size: 12.5px; color: var(--muted); margin-left: auto; text-align: right; max-width: 460px; line-height: 1.7; }
+  .method-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .method { border: 1px solid var(--line); border-radius: var(--r); padding: 16px 17px; background: var(--paper); }
+  .method .n { font-family: var(--mono); font-size: 10px; color: var(--brand); letter-spacing: .5px; }
+  .method h3 { font-size: 13.5px; font-weight: 700; margin: 8px 0 6px; }
+  .method p { font-size: 12px; color: var(--muted); line-height: 1.8; }
+  .method .r { font-family: var(--mono); font-size: 10.5px; color: var(--faint); margin-top: 9px; padding-top: 9px; border-top: 1px solid var(--paper-3); }
+  .opt-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+  .opt-col { border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; }
+  .opt-head { padding: 12px 15px; background: var(--paper-2); border-bottom: 1px solid var(--line); display: flex; align-items: center; gap: 8px; }
+  .opt-head .dot { width: 7px; height: 7px; border-radius: 2px; background: var(--brand); }
+  .opt-head h3 { font-size: 13px; font-weight: 700; }
+  .opt-list { padding: 6px 15px 12px; }
+  .opt-list li { display: flex; gap: 9px; padding: 7px 0; border-bottom: 1px solid var(--paper-3); font-size: 12.5px; color: var(--ink-2); line-height: 1.8; }
+  .opt-list li:last-child { border-bottom: none; }
+  .opt-list .n { font-family: var(--mono); font-size: 10px; color: var(--faint); flex-shrink: 0; margin-top: 3px; }
+  .table-wrap { border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; }
+  table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+  th {
+    text-align: left; font-size: 10.5px; font-family: var(--mono); letter-spacing: .5px;
+    color: var(--faint); background: var(--paper-2); padding: 10px 12px;
+    border-bottom: 1px solid var(--line); font-weight: 500; white-space: nowrap;
+  }
+  td { padding: 12px; border-bottom: 1px solid var(--paper-3); vertical-align: top; line-height: 1.75; color: var(--ink-2); }
+  tr:last-child td { border-bottom: none; }
+  td.id { font-family: var(--mono); font-size: 11px; color: var(--faint); white-space: nowrap; }
+  td.issue { font-weight: 600; color: var(--ink); }
+  td.fix { color: var(--muted); }
+  td.check { font-size: 11.5px; color: var(--brand-deep); }
+  .sev { display: inline-flex; align-items: center; justify-content: center; min-width: 30px; padding: 2px 6px; border-radius: var(--r-xs); font-family: var(--mono); font-size: 10px; font-weight: 600; }
+  .sev.p0 { background: var(--err-soft); color: var(--err); }
+  .sev.p1 { background: var(--warn-soft); color: var(--warn); }
+  .sev.p2 { background: var(--paper-3); color: var(--muted); }
+  .verify { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .v-card { border: 1px solid var(--line); border-radius: var(--r); padding: 15px 17px; display: flex; gap: 13px; align-items: flex-start; }
+  .v-ic { width: 26px; height: 26px; border-radius: var(--r-xs); background: var(--ok-soft); color: var(--ok); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 13px; font-weight: 700; }
+  .v-card h3 { font-size: 13px; font-weight: 700; }
+  .v-card p { font-size: 11.5px; color: var(--muted); line-height: 1.7; margin-top: 2px; }
+  .v-card .num { font-family: var(--mono); font-weight: 600; color: var(--brand); }
+  .shots { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  figure { border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; background: var(--paper); }
+  figure a { display: block; border-bottom: 1px solid var(--line); background: var(--paper-2); }
+  figure img { width: 100%; height: 340px; object-fit: contain; display: block; cursor: zoom-in; }
+  figcaption { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 10px 13px; font-size: 11.5px; color: var(--muted); }
+  figcaption b { font-family: var(--mono); font-size: 10px; color: var(--faint); font-weight: 500; white-space: nowrap; }
+  .note {
+    margin-top: 22px; padding: 14px 16px; background: var(--brand-soft);
+    border-left: 2px solid var(--brand); border-radius: 0 var(--r-sm) var(--r-sm) 0;
+    font-size: 12.5px; color: var(--ink-2); line-height: 1.85;
+  }
+  .note b { color: var(--brand-deep); }
+  .limits { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 28px; font-size: 12.5px; color: var(--muted); line-height: 1.85; }
+  .limits li { display: flex; gap: 8px; }
+  .limits .m { font-family: var(--mono); color: var(--faint); flex-shrink: 0; }
+  .conclusion { border: 1px solid var(--brand-line); border-radius: var(--r); padding: 22px 24px; background: var(--brand-soft); }
+  .conclusion h3 { font-size: 16px; font-weight: 700; color: var(--brand-deep); }
+  .conclusion p { font-size: 13px; color: var(--ink-2); line-height: 1.95; margin-top: 8px; }
+  footer { padding: 22px 48px 30px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: 11px; color: var(--faint); font-family: var(--mono); }
+  @media (max-width: 900px) {
+    .page { border-left: none; border-right: none; }
+    .top, .head, .body, footer { padding-left: 22px; padding-right: 22px; }
+    .kpis { grid-template-columns: repeat(2, 1fr); }
+    .kpi { border-bottom: 1px solid var(--line); }
+    .kpi:first-child, .kpi:last-child { padding-left: 15px; padding-right: 15px; }
+    .method-grid, .opt-grid, .verify, .shots, .limits { grid-template-columns: 1fr; }
+    .kpi:last-child { grid-column: 1 / -1; border-right: none; }
+    .head h1 { font-size: 30px; }
+    .sec-head { flex-wrap: wrap; }
+    .sec-head p { margin-left: 0; text-align: left; }
+    figure img { height: 300px; }
+    .table-wrap { border: none; border-radius: 0; }
+    table, thead, tbody, tr, td { display: block; width: 100%; }
+    thead { display: none; }
+    tr { border: 1px solid var(--line); border-radius: var(--r); padding: 13px 14px; margin-bottom: 10px; background: var(--paper); }
+    td { display: block; border: none; padding: 0; }
+    td.id, td.check { display: none; }
+    td:nth-child(2) { margin-bottom: 6px; }
+    td.issue { font-size: 13px; line-height: 1.65; }
+    td.fix { font-size: 12px; color: var(--muted); margin-top: 6px; line-height: 1.8; }
+    td.fix::before { content: "根因与修复 · "; font-family: var(--mono); font-size: 10px; color: var(--faint); }
+  }
+  @media print {
+    body { background: #fff; }
+    .page { max-width: none; border: none; }
+    .section { break-inside: avoid; }
+    figure { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="top">
+    <div class="brand">
+      <span class="logo">智</span>
+      <div><b>智学 AI</b><span>AI LEARNING HUB</span></div>
+    </div>
+    <div class="top-meta">QUALITY REPORT · 2026-10-30 · v1.0</div>
+  </div>
+
+  <div class="head">
+    <div class="kicker">界面优化 / 端到端测试 / 回归验证</div>
+    <h1>把界面做顺，把每个<em>功能走通</em>。</h1>
+    <p class="lead">
+      本次工作覆盖智学 AI 门户与学习工作台的全部 6 个功能板块：先做数据层与界面走查，
+      再用 Playwright 对桌面、平板、移动与 320px 窄屏四种视口执行端到端测试；过程中发现的问题均在本轮闭环修复，
+      最后以 100 项自动化断言和 76 条内部链接回归确认稳定。
+    </p>
+    <div class="head-facts">
+      <span><b>6</b> 功能板块</span>
+      <span><b>13</b> 条路由</span>
+      <span><b>4</b> 种视口</span>
+      <span><b>51</b> 节课 / <b>102</b> 道题</span>
+      <span><b>100%</b> 本地可运行</span>
+    </div>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi ok">
+      <div class="v">100<small>/100</small></div>
+      <div class="l">功能与边界断言通过</div>
+      <div class="s">desktop + mobile</div>
+    </div>
+    <div class="kpi ok">
+      <div class="v">0</div>
+      <div class="l">控制台 / 页面错误</div>
+      <div class="s">全流程 console + pageerror</div>
+    </div>
+    <div class="kpi">
+      <div class="v">76<small>/76</small></div>
+      <div class="l">内部链接有效</div>
+      <div class="s">6 课程 + 51 课时 + 入口</div>
+    </div>
+    <div class="kpi">
+      <div class="v">52</div>
+      <div class="l">页面状态审计</div>
+      <div class="s">13 路由 × 4 视口</div>
+    </div>
+    <div class="kpi">
+      <div class="v">23</div>
+      <div class="l">问题修复记录</div>
+      <div class="s">P0 ×1 · P1 ×11 · P2/P3 ×11</div>
+    </div>
+  </div>
+
+  <div class="body">
+
+    <section class="section">
+      <div class="sec-head">
+        <span class="sec-no">01</span>
+        <h2>测试范围与方法</h2>
+        <p>不只看页面是否能打开，而是覆盖内容、状态、边界与不同屏幕尺寸。</p>
+      </div>
+      <div class="method-grid">
+        <div class="method">
+          <div class="n">METHOD 01</div>
+          <h3>数据层静态校验</h3>
+          <p>用 Node VM 加载 data.js，检查课程、章节、课时、题目、选项、答案解析、路径与测评字段的完整性。</p>
+          <div class="r">0 issues / 0 warnings</div>
+        </div>
+        <div class="method">
+          <div class="n">METHOD 02</div>
+          <h3>端到端功能测试</h3>
+          <p>Playwright 驱动真实 Chromium，覆盖课程筛选、课时学习、测验判分、错题本、路径推荐、搜索、重置与存储异常。</p>
+          <div class="r">100 / 100 checks</div>
+        </div>
+        <div class="method">
+          <div class="n">METHOD 03</div>
+          <h3>多视口与链接审计</h3>
+          <p>在 1440×900、768×1024、390×844、320×720 四种视口逐路由检查横向溢出、控制台错误与页面状态，并爬取全部内部链接。</p>
+          <div class="r">52 states / 76 links</div>
+        </div>
+        <div class="method">
+          <div class="n">METHOD 04</div>
+          <h3>人工视觉走查</h3>
+          <p>对门户、工作台首页、课程、课时、练习、进度、收藏与测评结果逐页截图，检查层级、留白、对比度与信息密度。</p>
+          <div class="r">3 viewports screenshots</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="sec-head">
+        <span class="sec-no">02</span>
+        <h2>本轮优化点</h2>
+        <p>统一视觉语言，补齐响应式细节，并把关键状态反馈做成立即发生。</p>
+      </div>
+      <div class="opt-grid">
+        <div class="opt-col">
+          <div class="opt-head"><span class="dot"></span><h3>视觉与排版</h3></div>
+          <ul class="opt-list">
+            <li><span class="n">01</span><span>学习热力图改为全宽自适应网格，桌面 26 周、移动 14 周，新增月份标签与未来日期弱化。</span></li>
+            <li><span class="n">02</span><span>笔记卡片改为语义化网格，移动端单列、正文三行截断，日期统一按本地时区显示。</span></li>
+            <li><span class="n">03</span><span>能力雷达图改为等比缩放，移动端不再纵向拉伸。</span></li>
+            <li><span class="n">04</span><span>首页推荐课时卡补齐分类色顶线，与课程库卡片保持同一识别体系。</span></li>
+            <li><span class="n">05</span><span>练习范围中的“全部题库”改为通栏，移动端范围选项改为两列，开始按钮回到首屏。</span></li>
+            <li><span class="n">06</span><span>课程库无结果空态增加“清除筛选”，收藏与笔记本空态补上可执行入口。</span></li>
+            <li><span class="n">07</span><span>门户 Hero 示例数据加“示例”标记，锚点区块增加 sticky 导航偏移，修正品牌标签的非法嵌套。</span></li>
+            <li><span class="n">08</span><span>桌面顶栏恢复“返回门户”，搜索快捷键按平台显示 Ctrl K / ⌘K。</span></li>
+          </ul>
+        </div>
+        <div class="opt-col">
+          <div class="opt-head"><span class="dot"></span><h3>交互与反馈</h3></div>
+          <ul class="opt-list">
+            <li><span class="n">09</span><span>课时完成、收藏与测验成绩改为页内原地同步，不再因重渲染打断答题与滚动位置。</span></li>
+            <li><span class="n">10</span><span>测验新增进度条；答对计数实时更新；答错时展示完整正确选项文本。</span></li>
+            <li><span class="n">11</span><span>练习中心进入即重置上一轮会话；结课测验每次重新组卷；练习中点击侧栏可直接退出。</span></li>
+            <li><span class="n">12</span><span>笔记在失焦时立即落库，缩短离开页面时丢失输入的时间窗口。</span></li>
+            <li><span class="n">13</span><span>题量大于范围题量时给出提示，不再静默少出题。</span></li>
+            <li><span class="n">14</span><span>全部完成的课程按钮由“继续学习”改为“复习课程”。</span></li>
+            <li><span class="n">15</span><span>搜索浮层在路由切换时自动关闭，避免遮罩残留拦截点击。</span></li>
+            <li><span class="n">16</span><span>重置进度同时清理测评瞬时答案、练习会话与课程筛选，避免旧状态回潮。</span></li>
+          </ul>
+        </div>
+        <div class="opt-col">
+          <div class="opt-head"><span class="dot"></span><h3>可靠性与可访问性</h3></div>
+          <ul class="opt-list">
+            <li><span class="n">17</span><span>localStorage 读取增加对象/数组类型校验，损坏 JSON 与错误结构都能回落到默认状态。</span></li>
+            <li><span class="n">18</span><span>错题记录改为按 qid 复用：已掌握的题再次答错会重新打开，而不是产生重复记录。</span></li>
+            <li><span class="n">19</span><span>证书、最近学习、笔记与测验记录日期统一使用本地时区，避免 UTC 跨日。</span></li>
+            <li><span class="n">20</span><span>侧栏当前页增加 aria-current；菜单、搜索、测试按钮补齐 aria 与 disabled 属性。</span></li>
+            <li><span class="n">21</span><span>菜单支持 Esc 关闭并同步 aria-expanded；Toast 增加 role="status"。</span></li>
+            <li><span class="n">22</span><span>移动端输入框提升到 16px，避免 iOS 聚焦自动缩放；补充 prefers-reduced-motion。</span></li>
+            <li><span class="n">23</span><span>补充 favicon 与 theme-color，统一浏览器标签页与移动端状态栏的品牌呈现。</span></li>
+            <li><span class="n">24</span><span>分类掌握度在无测验数据时按覆盖率计算，不再被无数据压到 70% 上限。</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="sec-head">
+        <span class="sec-no">03</span>
+        <h2>问题修复记录</h2>
+        <p>按影响范围分级；每条都标注根因、修复方式与验证依据。</p>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>ID</th><th>级别</th><th>问题</th><th>根因与修复</th><th>验证</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="id">F-01</td><td><span class="sev p0">P0</span></td>
+              <td class="issue">课程详情页所有课时链接指向 undefined</td>
+              <td class="fix">章节里的原始课时对象没有 courseSlug，却被直接传入 lessonHash。改为先映射 LESSON_MAP 再生成链接。</td>
+              <td class="check">E2E 课时跳转 + 76 链接爬取</td>
+            </tr>
+            <tr>
+              <td class="id">F-02</td><td><span class="sev p1">P1</span></td>
+              <td class="issue">退出后进入练习中心仍停留在上一轮结课测验</td>
+              <td class="fix">renderPractice 复用了全局 PR.mode。改为只有带 exam 参数才建立测验会话，其余路由进入一律回到中心；测验每次重新组卷；练习会话中点击侧栏可退出。</td>
+              <td class="check">E2E 旧测验残留 + 侧栏退出</td>
+            </tr>
+            <tr>
+              <td class="id">F-03</td><td><span class="sev p1">P1</span></td>
+              <td class="issue">标记完成或测验结束后，页内“已完成 / 本课数据 / 目录勾选”不更新</td>
+              <td class="fix">原实现用 router() 重渲染，既不同步又重置测验与滚动。改为 syncLessonState() 原地更新状态标签、按钮、数据卡和当前目录项。</td>
+              <td class="check">E2E 完成态同步 ×2</td>
+            </tr>
+            <tr>
+              <td class="id">F-04</td><td><span class="sev p1">P1</span></td>
+              <td class="issue">收藏后“本课数据·收藏”仍显示未收藏</td>
+              <td class="fix">收藏只更新了按钮与侧栏。统一收进 syncLessonState()，并同步 aria-pressed。</td>
+              <td class="check">E2E 收藏页内同步</td>
+            </tr>
+            <tr>
+              <td class="id">F-05</td><td><span class="sev p1">P1</span></td>
+              <td class="issue">答题后题头“已答对 N 题”停留在作答前的计数</td>
+              <td class="fix">计数文本只在 draw() 时渲染。增加 #qScore 并在判分后实时更新。</td>
+              <td class="check">E2E 答对计数同步</td>
+            </tr>
+            <tr>
+              <td class="id">F-06</td><td><span class="sev p1">P1</span></td>
+              <td class="issue">无测验数据时，练习页与进度页显示 0%，与首页的“—”不一致</td>
+              <td class="fix">正确率改为按 quizDone 条件显示；分类掌握度在无测验样本时以覆盖率作为正确率分量，避免全学完仍只有 70%。</td>
+              <td class="check">E2E 空态正确率 ×2</td>
+            </tr>
+            <tr>
+              <td class="id">F-07</td><td><span class="sev p1">P1</span></td>
+              <td class="issue">热力图在平板右侧被截断，桌面右侧留白，移动端需横向滚动且缺月份参照</td>
+              <td class="fix">放弃固定 28px + max-content，改为 repeat(N,1fr) + aspect-ratio 的全宽网格；桌面 26 周、移动 14 周；补月份标签、未来日期弱化与今日描边。</td>
+              <td class="check">平板截图 + 移动 98 格 + 0 溢出</td>
+            </tr>
+            <tr>
+              <td class="id">F-08</td><td><span class="sev p1">P1</span></td>
+              <td class="issue">移动端笔记列表仍强制两列，卡片被压窄</td>
+              <td class="fix">原网格写在 inline style，媒体查询无法覆盖。改为 .notes-grid 类并在 ≤900px 折叠为单列。</td>
+              <td class="check">移动端计算样式 358px 单列</td>
+            </tr>
+            <tr>
+              <td class="id">F-09</td><td><span class="sev p1">P1</span></td>
+              <td class="issue">雷达图在移动端被纵向拉伸</td>
+              <td class="fix">drawRadar 写死了 inline 宽高，max-width 只压缩宽度。移除内联尺寸，改由 CSS max-width:100% + height:auto 维持比例。</td>
+              <td class="check">移动端宽高比 360/300 校验</td>
+            </tr>
+            <tr>
+              <td class="id">F-10</td><td><span class="sev p1">P1</span></td>
+              <td class="issue">重测时结果页等级可能低于侧栏实际等级</td>
+              <td class="fix">结果页展示 res.level，而应用等级是“进度等级与测评等级取高”。改为展示 Store.level() 的有效等级。</td>
+              <td class="check">有进度状态视觉走查</td>
+            </tr>
+            <tr>
+              <td class="id">F-11</td><td><span class="sev p1">P1</span></td>
+              <td class="issue">搜索浮层在路由变化后残留，继续拦截页面点击</td>
+              <td class="fix">搜索层挂在 body 上，路由只重绘 content。router() 开始时统一 closeSearch()。</td>
+              <td class="check">E2E 搜索 + 路由回归</td>
+            </tr>
+            <tr>
+              <td class="id">F-12</td><td><span class="sev p1">P1</span></td>
+              <td class="issue">localStorage 为损坏 JSON 或错误结构时页面崩溃</td>
+              <td class="fix">Store.load 只判断 truthy。增加 isObj/isArr 校验，lessons/activity/mistakes/exams/profile 非法时回落默认。</td>
+              <td class="check">E2E 损坏 JSON + 错误结构</td>
+            </tr>
+            <tr>
+              <td class="id">F-13</td><td><span class="sev p2">P2</span></td>
+              <td class="issue">重置进度后，测评瞬时答案 / 练习会话 / 课程筛选可能回潮</td>
+              <td class="fix">重置只清 Store 与 PR.mode。补齐 AS.idx/answers、PR.questions、CourseFilter 的重置。</td>
+              <td class="check">E2E 重置流程</td>
+            </tr>
+            <tr>
+              <td class="id">F-14</td><td><span class="sev p2">P2</span></td>
+              <td class="issue">课程库无结果时只能看到提示，没有清空筛选的操作</td>
+              <td class="fix">空态新增“清除筛选”按钮，重置分类/难度/关键词并重绘列表。</td>
+              <td class="check">E2E 空态 → 6 门课程</td>
+            </tr>
+            <tr>
+              <td class="id">F-15</td><td><span class="sev p2">P2</span></td>
+              <td class="issue">选择 20 题但范围不足时静默变成更少题量</td>
+              <td class="fix">组卷后比较实际题量与选择题量，不足时 Toast 提示。</td>
+              <td class="check">逻辑走查 + E2E 组卷</td>
+            </tr>
+            <tr>
+              <td class="id">F-16</td><td><span class="sev p2">P2</span></td>
+              <td class="issue">答错后只显示正确选项字母，学习反馈不足</td>
+              <td class="fix">测验判分、结果页与错题本统一显示“字母 + 完整选项文本”。</td>
+              <td class="check">E2E 错题本 + 视觉走查</td>
+            </tr>
+            <tr>
+              <td class="id">F-17</td><td><span class="sev p2">P2</span></td>
+              <td class="issue">课程 100% 完成后主按钮仍写“继续学习”</td>
+              <td class="fix">按 p.pct === 100 显示“复习课程”。</td>
+              <td class="check">E2E 全完成课程</td>
+            </tr>
+            <tr>
+              <td class="id">F-18</td><td><span class="sev p2">P2</span></td>
+              <td class="issue">首页推荐课时卡缺少分类色顶线，与课程库卡片体系不一致</td>
+              <td class="fix">miniLessonCard 补上 border-top-color = catColor。</td>
+              <td class="check">首页视觉走查</td>
+            </tr>
+            <tr>
+              <td class="id">F-19</td><td><span class="sev p2">P2</span></td>
+              <td class="issue">已掌握的错题再次答错会产生重复记录</td>
+              <td class="fix">addMistake 按 qid 复用已有记录，重新打开并累加错误次数。</td>
+              <td class="check">E2E 错题订正流程</td>
+            </tr>
+            <tr>
+              <td class="id">F-20</td><td><span class="sev p2">P2</span></td>
+              <td class="issue">输入笔记后立刻离开页面，500ms 防抖可能丢失内容</td>
+              <td class="fix">新增 blur 即时提交，防抖只负责输入中的自动保存提示。</td>
+              <td class="check">E2E 失焦立即保存</td>
+            </tr>
+            <tr>
+              <td class="id">F-21</td><td><span class="sev p2">P2</span></td>
+              <td class="issue">Windows 显示 ⌘K；桌面没有返回门户；移动输入触发缩放；锚点被 sticky 导航遮挡</td>
+              <td class="fix">按平台显示快捷键；顶栏恢复返回门户；移动输入 16px；section 增加 scroll-margin-top。</td>
+              <td class="check">E2E + 视觉走查</td>
+            </tr>
+            <tr>
+              <td class="id">F-22</td><td><span class="sev p2">P2</span></td>
+              <td class="issue">门户品牌使用 span &gt; div 非法嵌套；aria / disabled / reduced-motion / favicon 缺失</td>
+              <td class="fix">修正标签结构；补 aria-current、aria-expanded、aria-modal、role=status、disabled 属性、prefers-reduced-motion、favicon 与 theme-color。</td>
+              <td class="check">结构检查 + 路由审计</td>
+            </tr>
+            <tr>
+              <td class="id">F-23</td><td><span class="sev p2">P2</span></td>
+              <td class="issue">窗口跨 640px 断点缩放后，热力图仍沿用进入页面时的周数</td>
+              <td class="fix">renderProgress 只在渲染时读取 innerWidth。增加 resize 监听，仅在跨越断点且位于进度页时重算 26 / 14 周，并保留当前滚动位置；320px 下同步优化统计项换行与标题字号。</td>
+              <td class="check">预览复验 53/53：390↔768 热力图 14↔26</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="sec-head">
+        <span class="sec-no">04</span>
+        <h2>最终验证结果</h2>
+        <p>所有验证均在修复完成后重新执行，不接受“修复前通过”。</p>
+      </div>
+      <div class="verify">
+        <div class="v-card">
+          <span class="v-ic">✓</span>
+          <div><h3>功能端到端 <span class="num">100 / 100</span></h3><p>首页、课程筛选、课程详情、课时学习、随堂测验、练习组卷、结课测验、错题本、路径设置、能力测评、搜索、收藏笔记、进度、证书、重置、存储异常全部通过。</p></div>
+        </div>
+        <div class="v-card">
+          <span class="v-ic">✓</span>
+          <div><h3>数据完整性 <span class="num">0 issues</span></h3><p>6 门课程 / 51 节课 / 102 道测验 / 4 条路径 / 6 题测评；课时 id 唯一，选项与答案索引合法，解析完整，题目无重复。</p></div>
+        </div>
+        <div class="v-card">
+          <span class="v-ic">✓</span>
+          <div><h3>页面状态审计 <span class="num">52 / 52</span></h3><p>13 条路由 × 4 种视口；控制台错误 0，页面级横向溢出 0；平板与移动端的代码课时、热力图、笔记与雷达图均单独校验，320px 窄屏也无横向滚动。</p></div>
+        </div>
+        <div class="v-card">
+          <span class="v-ic">✓</span>
+          <div><h3>内部链接 <span class="num">76 / 76</span></h3><p>爬取门户与工作台中的全部 hash 链接，包含 6 个课程页、51 个课时页、4 条路径、6 个结课测验入口；无 404、无 undefined 链接。</p></div>
+        </div>
+        <div class="v-card">
+          <span class="v-ic">✓</span>
+          <div><h3>笔记与测验状态 <span class="num">持久化通过</span></h3><p>自动保存、失焦立即保存、刷新后恢复；测验成绩、错题、收藏、路径与测评结果均能从 localStorage 正确回读。</p></div>
+        </div>
+        <div class="v-card">
+          <span class="v-ic">✓</span>
+          <div><h3>异常与边界 <span class="num">全部兜底</span></h3><p>无效课程/课时/测验参数显示空态；损坏 JSON、错误结构数据、清零进度、无测验数据、空错题本、全部完成证书等场景均符合预期。</p></div>
+        </div>
+      </div>
+      <div class="note">
+        <b>结论：</b>门户与学习工作台的 6 个功能板块均可稳定运行；课程内容、测验判分、错题流转、路径推荐、搜索与进度数据交互一致；
+        桌面、平板、移动三端无页面级横向溢出；全流程无 console / page error。
+        <br><b>补充预览复验：</b>通过本地 HTTP 服务（127.0.0.1:8765）用系统默认浏览器打开门户，并完成 53 项渲染、交互与窗口缩放检查，53/53 通过；390↔768 缩放时热力图可在 14 / 26 周之间正确切换。
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="sec-head">
+        <span class="sec-no">05</span>
+        <h2>界面证据</h2>
+        <p>截图取自修复后的实际运行状态，数据为测试种子数据。</p>
+      </div>
+      <div class="shots">
+        <figure>
+          <a href="assets/report/home-desktop.png" target="_blank" rel="noopener"><img src="assets/report/home-desktop.png" alt="桌面端学习概览"></a>
+          <figcaption><span>桌面首页：路径卡、KPI、主题入口与推荐</span><b>1440 × 900</b></figcaption>
+        </figure>
+        <figure>
+          <a href="assets/report/progress-desktop.png" target="_blank" rel="noopener"><img src="assets/report/progress-desktop.png" alt="桌面端学习进度"></a>
+          <figcaption><span>桌面进度：全宽热力图、月份标签与能力雷达</span><b>1440 × 900</b></figcaption>
+        </figure>
+        <figure>
+          <a href="assets/report/quiz-desktop.png" target="_blank" rel="noopener"><img src="assets/report/quiz-desktop.png" alt="课时测验判分状态"></a>
+          <figcaption><span>课时测验：进度条、即时判分与答对计数</span><b>DESKTOP</b></figcaption>
+        </figure>
+        <figure>
+          <a href="assets/report/practice-mobile.png" target="_blank" rel="noopener"><img src="assets/report/practice-mobile.png" alt="移动端练习中心"></a>
+          <figcaption><span>移动练习：范围两列、全部题库通栏、首屏可见开始</span><b>390 × 844</b></figcaption>
+        </figure>
+        <figure>
+          <a href="assets/report/progress-mobile.png" target="_blank" rel="noopener"><img src="assets/report/progress-mobile.png" alt="移动端学习进度"></a>
+          <figcaption><span>移动进度：14 周热力图完整铺满，无横向滚动</span><b>390 × 844</b></figcaption>
+        </figure>
+        <figure>
+          <a href="assets/report/progress-tablet.png" target="_blank" rel="noopener"><img src="assets/report/progress-tablet.png" alt="平板端学习进度"></a>
+          <figcaption><span>平板进度：26 周热力图不再右侧截断</span><b>768 × 1024</b></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="sec-head">
+        <span class="sec-no">06</span>
+        <h2>边界与后续建议</h2>
+        <p>本轮不改变内容结构，也不引入后端依赖。</p>
+      </div>
+      <ul class="limits">
+        <li><span class="m">01</span><span>学习数据仍只保存在本机 localStorage，换浏览器或清理站点数据会丢失；不做账号同步。</span></li>
+        <li><span class="m">02</span><span>自动化覆盖以 Chromium 为准，Safari / Firefox 只做了代码层的兼容约束，未做真机回归。</span></li>
+        <li><span class="m">03</span><span>可访问性补齐了键盘、ARIA、对比度与 reduced-motion 基础项，但未执行 WCAG 全量审计。</span></li>
+        <li><span class="m">04</span><span>门户 Hero 右侧为产品示例数据，已明确标注“示例”，不代表真实学习记录。</span></li>
+        <li><span class="m">05</span><span>测评推荐周期与路径目录周期属于两种口径：前者按每周投入估算，后者是路径标准周期；若需要完全统一，可后续把推荐周期写入 profile。</span></li>
+        <li><span class="m">06</span><span>后续若接入账号或服务端，应把 localStorage 适配层替换为远端同步，并保留现有离线兜底。</span></li>
+      </ul>
+      <div class="conclusion" style="margin-top:26px;">
+        <h3>本轮交付状态</h3>
+        <p>
+          界面优化与问题修复已全部落地，回归测试 100/100 通过，内部链接 76/76 有效，三端页面状态审计无错误；
+          本地服务预览复验 53/53 通过。当前版本可以直接打开 <a href="index.html">index.html</a> 进入门户，或打开 <a href="app.html">app.html</a> 进入学习工作台。
+        </p>
+      </div>
+    </section>
+
+  </div>
+
+  <footer>
+    <span>智学 AI · 界面优化与端到端测试报告</span>
+    <span>Windows / Chromium 1248 / Playwright 1.61.1 / 2026-10-30</span>
+  </footer>
+</div>
+</body>
+</html>
