@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 476">
+<defs><marker id="arw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7a8a89"/></marker></defs>
+<style>
+text{font-family:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans SC',sans-serif;fill:#1f2d2c}
+.h{font-size:16px;font-weight:600}
+.b{font-size:13px}
+.s{font-size:11.5px;fill:#5b6b6a}
+</style>
+
+<text x="450" y="46" text-anchor="middle" class="h">MCP 架构：Host（AI 应用）通过协议连接多个 Server</text>
+<rect x="50" y="76" width="330" height="280" rx="14" fill="#eaf3f2" stroke="#0f5f5c" stroke-width="1.6"/>
+<text x="215" y="108" text-anchor="middle" class="h" fill="#0f5f5c">Host · AI 应用（IDE / 聊天助手）</text>
+<rect x="90" y="130" width="250" height="60" rx="10" fill="#fff" stroke="#0f5f5c"/>
+<text x="215" y="156" text-anchor="middle" class="b">大模型</text><text x="215" y="176" text-anchor="middle" class="s">负责推理与决定调用什么</text>
+<rect x="90" y="206" width="250" height="56" rx="10" fill="#0f5f5c"/>
+<text x="215" y="230" text-anchor="middle" class="b" fill="#fff">MCP Client（连接器）</text>
+<text x="215" y="250" text-anchor="middle" class="s" fill="#d5e7e5">与每个 Server 一对一通信</text>
+<rect x="90" y="278" width="250" height="56" rx="10" fill="#fff" stroke="#0f5f5c"/>
+<text x="215" y="302" text-anchor="middle" class="b">编排与安全</text><text x="215" y="322" text-anchor="middle" class="s">权限确认 · 结果回填 · 审计</text>
+<rect x="540" y="76" width="320" height="80" rx="12" fill="#f9efe4" stroke="#c47f3d" stroke-width="1.5"/>
+<text x="700" y="106" text-anchor="middle" class="h">GitHub Server</text>
+<text x="700" y="130" text-anchor="middle" class="s">读仓库 · 查 Issue · 建PR</text>
+<rect x="540" y="176" width="320" height="80" rx="12" fill="#e8eef5" stroke="#3d5a80" stroke-width="1.5"/>
+<text x="700" y="206" text-anchor="middle" class="h">文件系统 Server</text>
+<text x="700" y="230" text-anchor="middle" class="s">读文件 · 写文件 · 按路径管控</text>
+<rect x="540" y="276" width="320" height="80" rx="12" fill="#f2efe9" stroke="#7a6340" stroke-width="1.5"/>
+<text x="700" y="306" text-anchor="middle" class="h">数据库 Server</text>
+<text x="700" y="330" text-anchor="middle" class="s">查询 · 只暴露业务必需的工具</text>
+<line x1="342" y1="116" x2="534" y2="112" stroke="#7a8a89" stroke-width="1.5" marker-end="url(#arw)"/>
+<line x1="342" y1="234" x2="534" y2="216" stroke="#7a8a89" stroke-width="1.5" marker-end="url(#arw)"/>
+<line x1="342" y1="316" x2="534" y2="316" stroke="#7a8a89" stroke-width="1.5" marker-end="url(#arw)"/>
+<rect x="392" y="150" width="120" height="30" rx="6" fill="#fff" stroke="#0f5f5c"/>
+<text x="452" y="170" text-anchor="middle" class="s" fill="#0f5f5c">MCP 协议（JSON-RPC）</text>
+<rect x="50" y="382" width="810" height="70" rx="12" fill="#fafaf8" stroke="#d8e2e1"/>
+<text x="74" y="410" class="h">三大原语</text>
+<text x="74" y="436" class="b">Tools（模型决定何时调用）· Resources（应用决定注入什么数据）· Prompts（用户主动选用模板）</text>
+
+</svg>

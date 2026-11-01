@@ -1319,6 +1319,7 @@ const COURSES = [
             summary: '角色定视角，任务定目标，上下文定依据，约束定边界。',
             sections: [
               { h: '为什么「随便问」不行', p: '模型需要从提示中推断你的真实意图。信息不足时它会用最常见的方式补全，结果往往「正确但没用」。结构化提示的本质是减少模型猜测的空间。' },
+              { img: 'assets/images/prompt-engineering/four-elements.svg', cap: '图：提示词四要素：角色、任务、上下文、约束' },
               { h: '四要素', list: [
                 '角色（Role）：你是一名资深数据分析师——决定专业视角与用词。',
                 '任务（Task）：把这份销售数据整理成三条结论——决定要做什么。',
@@ -1948,6 +1949,7 @@ const COURSES = [
             summary: '思考→行动→观察的循环为什么有效，以及它的两个常见病灶。',
             sections: [
               { h: '从思维链到 ReAct', p: '思维链让模型「先想后答」，但想完只能给出一个答案；ReAct 在思考与行动之间加入观察：想→做→看结果→再想。每一步行动的反馈都会进入上下文，成为下一步推理的依据。模型因此从「一次答完」变成「边做边修正」。' },
+              { img: 'assets/images/ai-agent/react-loop.svg', cap: '图：ReAct 循环：思考 → 行动 → 观察，循环直到达成目标' },
               { h: '一个循环的样子', code: "Thought: 用户要查上海明天的天气，需要调用天气工具\nAction: get_weather(city='上海', date='明天')\nObservation: 小雨，18-24°C\nThought: 已拿到结果，可以整理输出了\nAnswer: 上海明天小雨，气温 18-24°C，建议带伞" },
               { h: '为什么循环有效', list: [
                 '反馈修正：工具报错或结果不符时，模型能立即调整，而不是硬着头皮错到底。',
@@ -2235,6 +2237,7 @@ const COURSES = [
                 'Client：Host 内部的连接器，与某个 Server 保持一对一通信。',
                 'Server：对外暴露能力的轻量程序，如「GitHub Server」「数据库 Server」，通过 stdio 或 HTTP 提供服务。'
               ] },
+              { img: 'assets/images/mcp-skill-harness/mcp-architecture.svg', cap: '图：MCP 架构：Host 通过协议连接多个 Server' },
               { h: '三大原语', list: [
                 'Tools（工具）：模型可主动调用的操作，如查数据、写文件——由模型决定何时调用。',
                 'Resources（资源）：供读取的上下文数据，如文件内容、API 响应——由应用决定注入什么。',

@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 444">
+<defs><marker id="arw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7a8a89"/></marker></defs>
+<style>
+text{font-family:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans SC',sans-serif;fill:#1f2d2c}
+.h{font-size:16px;font-weight:600}
+.b{font-size:13px}
+.s{font-size:11.5px;fill:#5b6b6a}
+</style>
+
+<text x="450" y="48" text-anchor="middle" class="h">提示词四要素：角色 · 任务 · 上下文 · 约束</text>
+<rect x="50" y="76" width="800" height="64" rx="10" fill="#1b1e24"/>
+<rect x="62" y="90" width="184" height="36" rx="6" fill="#0f5f5c"/>
+<text x="154" y="113" text-anchor="middle" class="b" fill="#fff" font-size="12.5">角色 · 资深数据分析师</text>
+<rect x="254" y="90" width="184" height="36" rx="6" fill="#3d5a80"/>
+<text x="346" y="113" text-anchor="middle" class="b" fill="#fff" font-size="12.5">任务 · 整理成 3 条结论</text>
+<rect x="446" y="90" width="184" height="36" rx="6" fill="#8a5a2e"/>
+<text x="538" y="113" text-anchor="middle" class="b" fill="#fff" font-size="12.5">上下文 · 华东区 Q3 口径</text>
+<rect x="638" y="90" width="200" height="36" rx="6" fill="#9e3b32"/>
+<text x="738" y="113" text-anchor="middle" class="b" fill="#fff" font-size="12.5">约束 · 200 字内 · 表格输出</text>
+<rect x="50" y="170" width="185" height="180" rx="12" fill="#eaf3f2" stroke="#0f5f5c" stroke-width="1.4"/>
+<text x="142" y="202" text-anchor="middle" class="h">角色 Role</text>
+<text x="142" y="232" text-anchor="middle" class="b">决定专业视角与用词</text>
+<text x="142" y="262" text-anchor="middle" class="s">「你是一名资深数据分析师」</text>
+<text x="142" y="290" text-anchor="middle" class="s">让回答带行业口径，</text>
+<text x="142" y="310" text-anchor="middle" class="s">而不是泛泛而谈</text>
+<rect x="255" y="170" width="185" height="180" rx="12" fill="#e8eef5" stroke="#3d5a80" stroke-width="1.4"/>
+<text x="347" y="202" text-anchor="middle" class="h">任务 Task</text>
+<text x="347" y="232" text-anchor="middle" class="b">决定要做什么</text>
+<text x="347" y="262" text-anchor="middle" class="s">「整理成 3 条结论」</text>
+<text x="347" y="290" text-anchor="middle" class="s">动词 + 数量 + 对象，</text>
+<text x="347" y="310" text-anchor="middle" class="s">越具体越好</text>
+<rect x="460" y="170" width="185" height="180" rx="12" fill="#f9efe4" stroke="#8a5a2e" stroke-width="1.4"/>
+<text x="552" y="202" text-anchor="middle" class="h">上下文 Context</text>
+<text x="552" y="232" text-anchor="middle" class="b">决定依据</text>
+<text x="552" y="262" text-anchor="middle" class="s">「数据口径为已发货订单」</text>
+<text x="552" y="290" text-anchor="middle" class="s">口径、背景、受众，</text>
+<text x="552" y="310" text-anchor="middle" class="s">补上模型猜不到的信息</text>
+<rect x="665" y="170" width="185" height="180" rx="12" fill="#f7e9e7" stroke="#9e3b32" stroke-width="1.4"/>
+<text x="757" y="202" text-anchor="middle" class="h">约束 Constraints</text>
+<text x="757" y="232" text-anchor="middle" class="b">决定边界</text>
+<text x="757" y="262" text-anchor="middle" class="s">「不超过 200 字 · 用表格」</text>
+<text x="757" y="290" text-anchor="middle" class="s">长度、格式、禁止事项，</text>
+<text x="757" y="310" text-anchor="middle" class="s">防止自由发挥</text>
+<rect x="50" y="376" width="800" height="44" rx="10" fill="#fafaf8" stroke="#d8e2e1"/>
+<text x="74" y="404" class="b">四项不必每次全齐，但缺什么，模型就只能在那个维度上自由发挥——错的输出，往往源于缺的要素。</text>
+
+</svg>
