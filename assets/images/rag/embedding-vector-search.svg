@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 430">
+<defs><marker id="arw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7a8a89"/></marker></defs>
+<style>
+text{font-family:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans SC',sans-serif;fill:#1f2d2c}
+.h{font-size:16px;font-weight:600}
+.b{font-size:13px}
+.s{font-size:11.5px;fill:#5b6b6a}
+</style>
+
+<text x="450" y="48" text-anchor="middle" class="h">词向量：语义相近的词，在空间里距离更近</text>
+<rect x="60" y="76" width="500" height="330" rx="12" fill="#fbfbfa" stroke="#d8e2e1"/>
+<line x1="100" y1="360" x2="530" y2="360" stroke="#c9d6d5" stroke-width="1.2"/>
+<line x1="130" y1="90" x2="130" y2="380" stroke="#c9d6d5" stroke-width="1.2"/>
+<circle cx="255" cy="150" r="7" fill="#0f5f5c"/><text x="272" y="146" class="h">国王</text>
+<circle cx="420" cy="140" r="7" fill="#0f5f5c"/><text x="437" y="136" class="h">女王</text>
+<circle cx="240" cy="300" r="7" fill="#c47f3d"/><text x="257" y="296" class="h">男人</text>
+<circle cx="405" cy="292" r="7" fill="#c47f3d"/><text x="422" y="288" class="h">女人</text>
+<line x1="247" y1="292" x2="413" y2="284" stroke="#c47f3d" stroke-width="1.6" marker-end="url(#arw)"/>
+<line x1="262" y1="157" x2="413" y2="147" stroke="#0f5f5c" stroke-width="1.6" marker-end="url(#arw)"/>
+<text x="336" y="240" text-anchor="middle" class="b">方向相同，长度相等</text>
+<text x="336" y="264" text-anchor="middle" class="b" fill="#0f5f5c">国王 − 男人 + 女人 ≈ 女王</text>
+<circle cx="185" cy="118" r="6" fill="#5a5470"/><text x="200" y="114" class="s">皇帝</text>
+<circle cx="175" cy="322" r="6" fill="#5a5470"/><text x="190" y="318" class="s">男孩</text>
+<circle cx="470" cy="318" r="6" fill="#5a5470"/><text x="440" y="335" class="s">女孩</text>
+<rect x="600" y="76" width="262" height="330" rx="12" fill="#fafaf8" stroke="#d8e2e1"/>
+<text x="622" y="108" class="h">为什么它有用？</text>
+<text x="622" y="138" class="b">「如何退货」与「退货流程」</text>
+<text x="622" y="162" class="b">字面不重叠，向量却很近——</text>
+<text x="622" y="186" class="b">所以语义检索能搜到。</text>
+<text x="622" y="222" class="b">检索：算查询与文档的余弦</text>
+<text x="622" y="246" class="b">相似度，取 top-k。</text>
+<text x="622" y="282" class="b">注意：查询与文档必须用</text>
+<text x="622" y="306" class="b">同一个模型编码，否则相似度</text>
+<text x="622" y="330" class="b">会系统性失真。</text>
+
+</svg>

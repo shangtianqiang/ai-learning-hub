@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 440">
+<defs><marker id="arw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7a8a89"/></marker></defs>
+<style>
+text{font-family:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans SC',sans-serif;fill:#1f2d2c}
+.h{font-size:16px;font-weight:600}
+.b{font-size:13px}
+.s{font-size:11.5px;fill:#5b6b6a}
+.dim{fill:#5b6b6a}
+.w{fill:#ffffff}
+</style>
+
+<text x="450" y="54" text-anchor="middle" class="h">LoRA：冻结主模型，只训练旁路小矩阵</text>
+<rect x="90" y="120" width="220" height="150" rx="12" fill="#f2efe9" stroke="#7a6340" stroke-width="1.5"/>
+<text x="200" y="185" text-anchor="middle" class="h">主权重 W</text>
+<text x="200" y="212" text-anchor="middle" class="b">原模型的全部参数</text>
+<text x="200" y="240" text-anchor="middle" class="b" fill="#7a6340">❄️ 冻结不训练</text>
+<rect x="390" y="96" width="170" height="52" rx="9" fill="#f9efe4" stroke="#c47f3d" stroke-width="1.5"/>
+<text x="475" y="128" text-anchor="middle" class="b">矩阵 A（降维）🔥</text>
+<rect x="390" y="216" width="170" height="52" rx="9" fill="#f9efe4" stroke="#c47f3d" stroke-width="1.5"/>
+<text x="475" y="248" text-anchor="middle" class="b">矩阵 B（升维）🔥</text>
+<path d="M312,150 C350,130 355,122 386,122" fill="none" stroke="#7a8a89" stroke-width="1.5" marker-end="url(#arw)"/>
+<path d="M312,240 C350,260 355,242 386,242" fill="none" stroke="#7a8a89" stroke-width="1.5" marker-end="url(#arw)"/>
+<line x1="475" y1="150" x2="475" y2="212" stroke="#c47f3d" stroke-width="1.5" marker-end="url(#arw)"/>
+<text x="500" y="186" class="s">A×B = ΔW（增量）</text>
+<rect x="640" y="150" width="150" height="72" rx="10" fill="#eaf3f2" stroke="#0f5f5c" stroke-width="1.5"/>
+<text x="715" y="182" text-anchor="middle" class="b">输出 = W·x</text><text x="715" y="206" text-anchor="middle" class="b">　　 + B·A·x</text>
+<line x1="562" y1="200" x2="636" y2="192" stroke="#7a8a89" stroke-width="1.5" marker-end="url(#arw)"/>
+<line x1="312" y1="200" x2="636" y2="200" stroke="#0f5f5c" stroke-width="1.4" opacity="0.4"/>
+<rect x="90" y="316" width="700" height="98" rx="12" fill="#fafaf8" stroke="#d8e2e1"/>
+<text x="114" y="348" class="b">· 可训练参数只有原模型的 0.1%–1%，消费级显卡也能微调大模型。</text>
+<text x="114" y="376" class="b">· 训练完可把 ΔW 合并回 W，推理时零额外开销；换任务只需换一个小补丁。</text>
+
+</svg>

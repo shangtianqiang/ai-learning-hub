@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 440">
+<defs><marker id="arw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7a8a89"/></marker></defs>
+<style>
+text{font-family:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans SC',sans-serif;fill:#1f2d2c}
+.h{font-size:16px;font-weight:600}
+.b{font-size:13px}
+.s{font-size:11.5px;fill:#5b6b6a}
+.dim{fill:#5b6b6a}
+.w{fill:#ffffff}
+</style>
+
+<rect x="40" y="60" width="260" height="330" rx="12" fill="#eaf3f2" stroke="#0f5f5c" stroke-width="1.4"/>
+<text x="170" y="100" text-anchor="middle" class="h">监督学习</text>
+<text x="170" y="124" text-anchor="middle" class="s">有标准答案</text>
+<circle cx="110" cy="185" r="9" fill="#0f5f5c"/><circle cx="145" cy="205" r="9" fill="#0f5f5c"/><circle cx="230" cy="190" r="9" fill="#c47f3d"/><circle cx="255" cy="215" r="9" fill="#c47f3d"/>
+<text x="110" y="172" text-anchor="middle" class="s">标签 A</text><text x="243" y="177" text-anchor="middle" class="s">标签 B</text>
+<text x="170" y="275" text-anchor="middle" class="b">输入 + 正确答案</text>
+<text x="170" y="300" text-anchor="middle" class="b">学会「输入 → 输出」</text>
+<text x="170" y="345" text-anchor="middle" class="s">例：垃圾邮件分类</text>
+<rect x="320" y="60" width="260" height="330" rx="12" fill="#f2efe9" stroke="#7a6340" stroke-width="1.4"/>
+<text x="450" y="100" text-anchor="middle" class="h">无监督学习</text>
+<text x="450" y="124" text-anchor="middle" class="s">没有标准答案</text>
+<circle cx="400" cy="190" r="9" fill="#7a6340"/><circle cx="425" cy="205" r="9" fill="#7a6340"/><circle cx="510" cy="185" r="9" fill="#a3926b"/><circle cx="530" cy="210" r="9" fill="#a3926b"/>
+<ellipse cx="413" cy="198" rx="45" ry="38" fill="none" stroke="#7a6340" stroke-dasharray="4 4"/>
+<ellipse cx="521" cy="198" rx="45" ry="38" fill="none" stroke="#a3926b" stroke-dasharray="4 4"/>
+<text x="450" y="275" text-anchor="middle" class="b">只有输入数据</text>
+<text x="450" y="300" text-anchor="middle" class="b">自己发现结构（聚类）</text>
+<text x="450" y="345" text-anchor="middle" class="s">例：用户分群</text>
+<rect x="600" y="60" width="260" height="330" rx="12" fill="#f3e9e7" stroke="#9e3b32" stroke-width="1.4"/>
+<text x="730" y="100" text-anchor="middle" class="h">强化学习</text>
+<text x="730" y="124" text-anchor="middle" class="s">靠奖励试错</text>
+<rect x="640" y="165" width="70" height="40" rx="8" fill="#fff" stroke="#9e3b32"/><text x="675" y="190" text-anchor="middle" class="b">智能体</text>
+<rect x="750" y="165" width="70" height="40" rx="8" fill="#fff" stroke="#9e3b32"/><text x="785" y="190" text-anchor="middle" class="b">环境</text>
+<line x1="712" y1="178" x2="748" y2="178" stroke="#9e3b32" stroke-width="1.4" marker-end="url(#arw)"/>
+<line x1="748" y1="196" x2="712" y2="196" stroke="#9e3b32" stroke-width="1.4" marker-end="url(#arw)"/>
+<text x="730" y="165" text-anchor="middle" class="s">动作</text><text x="730" y="215" text-anchor="middle" class="s">奖励</text>
+<text x="730" y="275" text-anchor="middle" class="b">试错 + 奖励信号</text>
+<text x="730" y="300" text-anchor="middle" class="b">学会最大化长期收益</text>
+<text x="730" y="345" text-anchor="middle" class="s">例：下棋、机器人控制</text>
+
+</svg>

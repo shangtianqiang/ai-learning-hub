@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 456">
+<defs><marker id="arw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7a8a89"/></marker></defs>
+<style>
+text{font-family:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans SC',sans-serif;fill:#1f2d2c}
+.h{font-size:16px;font-weight:600}
+.b{font-size:13px}
+.s{font-size:11.5px;fill:#5b6b6a}
+</style>
+
+<text x="450" y="50" text-anchor="middle" class="h">Agent 产品 = 模型内核 + Harness 工程外壳</text>
+<rect x="70" y="80" width="760" height="240" rx="16" fill="#eaf3f2" stroke="#0f5f5c" stroke-width="1.6"/>
+<text x="450" y="112" text-anchor="middle" class="h" fill="#0f5f5c">Harness（工程外壳）</text>
+<rect x="100" y="130" width="700" height="170" rx="10" fill="none" stroke="#7a8a89" stroke-dasharray="5 4"/>
+<rect x="360" y="190" width="180" height="50" rx="10" fill="#0f5f5c"/>
+<text x="450" y="211" text-anchor="middle" class="h" fill="#fff">大模型</text>
+<text x="450" y="229" text-anchor="middle" class="s" fill="#d5e7e5">只会推理与生成</text>
+<rect x="120" y="140" width="150" height="50" rx="8" fill="#fff" stroke="#0f5f5c"/><text x="195" y="171" text-anchor="middle" class="b">循环控制</text>
+<rect x="290" y="140" width="150" height="50" rx="8" fill="#fff" stroke="#0f5f5c"/><text x="365" y="171" text-anchor="middle" class="b">上下文工程</text>
+<rect x="460" y="140" width="150" height="50" rx="8" fill="#fff" stroke="#0f5f5c"/><text x="535" y="171" text-anchor="middle" class="b">工具治理</text>
+<rect x="630" y="140" width="150" height="50" rx="8" fill="#fff" stroke="#0f5f5c"/><text x="705" y="171" text-anchor="middle" class="b">失败兜底</text>
+<rect x="120" y="240" width="150" height="50" rx="8" fill="#fff" stroke="#0f5f5c"/><text x="195" y="271" text-anchor="middle" class="b">权限确认</text>
+<rect x="290" y="240" width="150" height="50" rx="8" fill="#fff" stroke="#0f5f5c"/><text x="365" y="271" text-anchor="middle" class="b">预算熔断</text>
+<rect x="460" y="240" width="150" height="50" rx="8" fill="#fff" stroke="#0f5f5c"/><text x="535" y="271" text-anchor="middle" class="b">错误转述</text>
+<rect x="630" y="240" width="150" height="50" rx="8" fill="#fff" stroke="#0f5f5c"/><text x="705" y="271" text-anchor="middle" class="b">审计日志</text>
+<rect x="70" y="344" width="760" height="90" rx="12" fill="#fafaf8" stroke="#d8e2e1"/>
+<text x="94" y="374" class="b">同样的模型，Harness 决定体验上限：好的外壳会压缩旧上下文、并行子任务、拦住危险命令；差的外壳让模型在报错里打转。</text>
+<text x="94" y="402" class="s">权限分层是灵魂：读操作自动 · 写操作提示 · 删除与对外发送必须人工确认。</text>
+
+</svg>

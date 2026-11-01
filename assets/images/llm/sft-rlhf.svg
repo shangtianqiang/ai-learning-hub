@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400">
+<defs><marker id="arw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7a8a89"/></marker></defs>
+<style>
+text{font-family:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans SC',sans-serif;fill:#1f2d2c}
+.h{font-size:16px;font-weight:600}
+.b{font-size:13px}
+.s{font-size:11.5px;fill:#5b6b6a}
+.dim{fill:#5b6b6a}
+.w{fill:#ffffff}
+</style>
+
+<text x="450" y="52" text-anchor="middle" class="h">对齐三阶段：从「会接话」到「按人类偏好办事」</text>
+<rect x="60" y="90" width="170" height="64" rx="10" fill="#f2efe9" stroke="#7a6340" stroke-width="1.4"/>
+<text x="145" y="118" text-anchor="middle" class="b">预训练模型</text><text x="145" y="140" text-anchor="middle" class="s">只会续写文本</text>
+<line x1="232" y1="122" x2="272" y2="122" stroke="#7a8a89" stroke-width="1.5" marker-end="url(#arw)"/>
+<rect x="278" y="80" width="176" height="84" rx="10" fill="#eaf3f2" stroke="#0f5f5c" stroke-width="1.5"/>
+<text x="366" y="106" text-anchor="middle" class="h">① 监督微调 SFT</text><text x="366" y="128" text-anchor="middle" class="s">用人工示范问答对</text><text x="366" y="146" text-anchor="middle" class="s">学会「听指令」</text>
+<line x1="456" y1="122" x2="496" y2="122" stroke="#7a8a89" stroke-width="1.5" marker-end="url(#arw)"/>
+<rect x="502" y="80" width="176" height="84" rx="10" fill="#f9efe4" stroke="#c47f3d" stroke-width="1.5"/>
+<text x="590" y="106" text-anchor="middle" class="h">② 训练奖励模型</text><text x="590" y="128" text-anchor="middle" class="s">人类对多个回答排序</text><text x="590" y="146" text-anchor="middle" class="s">学出「什么是好回答」</text>
+<line x1="680" y1="122" x2="720" y2="122" stroke="#7a8a89" stroke-width="1.5" marker-end="url(#arw)"/>
+<rect x="726" y="80" width="140" height="84" rx="10" fill="#e6f0e9" stroke="#4d6b50" stroke-width="1.5"/>
+<text x="796" y="106" text-anchor="middle" class="h">③ 强化学习</text><text x="796" y="128" text-anchor="middle" class="s">按奖励信号优化</text><text x="796" y="146" text-anchor="middle" class="s">对齐后的模型</text>
+<rect x="60" y="210" width="806" height="150" rx="12" fill="#fafaf8" stroke="#d8e2e1"/>
+<text x="84" y="242" class="h">为什么要绕这么一圈？</text>
+<text x="84" y="272" class="b">· SFT 只能模仿示范，覆盖不了所有问法；</text>
+<text x="84" y="300" class="b">· 奖励模型把「人类模糊的偏好」变成可计算的分数，模型就能自动朝偏好优化；</text>
+<text x="84" y="328" class="b">· 这一步决定了模型「愿不愿意说不知道」「会不会拒答有害请求」。</text>
+
+</svg>

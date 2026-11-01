@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400">
+<defs><marker id="arw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7a8a89"/></marker></defs>
+<style>
+text{font-family:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans SC',sans-serif;fill:#1f2d2c}
+.h{font-size:16px;font-weight:600}
+.b{font-size:13px}
+.s{font-size:11.5px;fill:#5b6b6a}
+</style>
+
+<text x="450" y="48" text-anchor="middle" class="h">知识图谱：实体为点、关系为边，答案藏在关系链里</text>
+<rect x="300" y="96" width="120" height="46" rx="23" fill="#eaf3f2" stroke="#0f5f5c" stroke-width="1.5"/>
+<text x="360" y="125" text-anchor="middle" class="h">鲁迅</text>
+<rect x="90" y="220" width="140" height="46" rx="23" fill="#f9efe4" stroke="#c47f3d" stroke-width="1.5"/>
+<text x="160" y="249" text-anchor="middle" class="b">《呐喊》</text>
+<rect x="300" y="320" width="150" height="46" rx="23" fill="#f9efe4" stroke="#c47f3d" stroke-width="1.5"/>
+<text x="375" y="349" text-anchor="middle" class="b">《阿Q正传》</text>
+<rect x="540" y="320" width="150" height="46" rx="23" fill="#f9efe4" stroke="#c47f3d" stroke-width="1.5"/>
+<text x="615" y="349" text-anchor="middle" class="b">《狂人日记》</text>
+<rect x="690" y="112" width="110" height="46" rx="23" fill="#f2efe9" stroke="#a3926b" stroke-width="1.5"/>
+<text x="745" y="141" text-anchor="middle" class="b">绍兴</text>
+<rect x="60" y="96" width="110" height="46" rx="23" fill="#f2efe9" stroke="#a3926b" stroke-width="1.5"/>
+<text x="115" y="141" text-anchor="middle" class="b">作家</text>
+<line x1="298" y1="112" x2="172" y2="112" stroke="#7a8a89" stroke-width="1.5" marker-end="url(#arw)"/>
+<text x="234" y="102" text-anchor="middle" class="s">属于</text>
+<line x1="316" y1="142" x2="184" y2="218" stroke="#7a8a89" stroke-width="1.5" marker-end="url(#arw)"/>
+<text x="228" y="176" text-anchor="middle" class="s">著有</text>
+<line x1="330" y1="142" x2="366" y2="316" stroke="#7a8a89" stroke-width="1.5" marker-end="url(#arw)"/>
+<text x="322" y="236" text-anchor="middle" class="s">收录</text>
+<line x1="392" y1="142" x2="602" y2="316" stroke="#7a8a89" stroke-width="1.5" marker-end="url(#arw)"/>
+<text x="514" y="236" text-anchor="middle" class="s">收录</text>
+<line x1="422" y1="112" x2="686" y2="126" stroke="#7a8a89" stroke-width="1.5" marker-end="url(#arw)"/>
+<text x="556" y="106" text-anchor="middle" class="s">故乡</text>
+<rect x="620" y="200" width="250" height="86" rx="10" fill="#fafaf8" stroke="#d8e2e1"/>
+<text x="640" y="228" class="b">「《呐喊》收录了哪些小说？」</text>
+<text x="640" y="252" class="b">需要跨文档串联两跳关系——</text>
+<text x="640" y="274" class="s">这正是 GraphRAG 补的能力</text>
+
+</svg>

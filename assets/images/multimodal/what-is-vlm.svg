@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400">
+<defs><marker id="arw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7a8a89"/></marker></defs>
+<style>
+text{font-family:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans SC',sans-serif;fill:#1f2d2c}
+.h{font-size:16px;font-weight:600}
+.b{font-size:13px}
+.s{font-size:11.5px;fill:#5b6b6a}
+</style>
+
+<text x="450" y="48" text-anchor="middle" class="h">VLM 怎么「看」图：切块 → 编码 → 与文字一起推理</text>
+<rect x="50" y="86" width="140" height="120" rx="8" fill="#eaf3f2" stroke="#0f5f5c" stroke-width="1.4"/>
+<line x1="96" y1="86" x2="96" y2="206" stroke="#0f5f5c" stroke-width="1"/>
+<line x1="143" y1="86" x2="143" y2="206" stroke="#0f5f5c" stroke-width="1"/>
+<line x1="50" y1="126" x2="190" y2="126" stroke="#0f5f5c" stroke-width="1"/>
+<line x1="50" y1="166" x2="190" y2="166" stroke="#0f5f5c" stroke-width="1"/>
+<text x="120" y="228" text-anchor="middle" class="b">一张图片</text>
+<rect x="240" y="86" width="150" height="120" rx="8" fill="#fafaf8" stroke="#d8e2e1"/>
+<circle cx="268" cy="106" r="10" fill="#bcdedb"/><circle cx="303" cy="106" r="10" fill="#bcdedb"/><circle cx="338" cy="106" r="10" fill="#bcdedb"/><circle cx="373" cy="106" r="10" fill="#bcdedb"/>
+<circle cx="268" cy="146" r="10" fill="#bcdedb"/><circle cx="303" cy="146" r="10" fill="#bcdedb"/><circle cx="338" cy="146" r="10" fill="#bcdedb"/><circle cx="373" cy="146" r="10" fill="#bcdedb"/>
+<circle cx="268" cy="186" r="10" fill="#bcdedb"/><circle cx="303" cy="186" r="10" fill="#bcdedb"/><circle cx="338" cy="186" r="10" fill="#bcdedb"/><circle cx="373" cy="186" r="10" fill="#bcdedb"/>
+<text x="315" y="228" text-anchor="middle" class="b">切成小块 patch</text>
+<rect x="440" y="86" width="140" height="120" rx="8" fill="#f9efe4" stroke="#c47f3d" stroke-width="1.4"/>
+<text x="510" y="130" text-anchor="middle" class="b">每块 → 一个向量</text>
+<text x="510" y="156" text-anchor="middle" class="s">（与文字 token</text>
+<text x="510" y="176" text-anchor="middle" class="s">同一空间）</text>
+<text x="510" y="228" text-anchor="middle" class="b">序列化</text>
+<rect x="630" y="86" width="230" height="120" rx="10" fill="#eaf3f2" stroke="#0f5f5c" stroke-width="1.5"/>
+<text x="745" y="122" text-anchor="middle" class="h">Transformer</text>
+<text x="745" y="148" text-anchor="middle" class="s">图块向量 + 文字向量</text>
+<text x="745" y="170" text-anchor="middle" class="s">放进同一个注意力</text>
+<text x="745" y="228" text-anchor="middle" class="b">跨模态联合推理</text>
+<line x1="192" y1="146" x2="236" y2="146" stroke="#7a8a89" stroke-width="1.5" marker-end="url(#arw)"/>
+<line x1="392" y1="146" x2="436" y2="146" stroke="#7a8a89" stroke-width="1.5" marker-end="url(#arw)"/>
+<line x1="582" y1="146" x2="626" y2="146" stroke="#7a8a89" stroke-width="1.5" marker-end="url(#arw)"/>
+<rect x="50" y="268" width="810" height="108" rx="12" fill="#fafaf8" stroke="#d8e2e1"/>
+<text x="74" y="298" class="h">工程化要点</text>
+<text x="74" y="326" class="b">· 输出用结构化 JSON（字段 + 位置），别让模型写散文；「先指认位置，再下结论」能压制视觉幻觉。</text>
+<text x="74" y="352" class="s">· 弱项要避开：精确计数、精确测量、极小文字——这些交给代码与人工复核。</text>
+
+</svg>

@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 410">
+<defs><marker id="arw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7a8a89"/></marker></defs>
+<style>
+text{font-family:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans SC',sans-serif;fill:#1f2d2c}
+.h{font-size:16px;font-weight:600}
+.b{font-size:13px}
+.s{font-size:11.5px;fill:#5b6b6a}
+</style>
+
+<text x="450" y="48" text-anchor="middle" class="h">把 AI 嵌进研发全流程：AI 提效率，人守决策</text>
+<rect x="40" y="90" width="120" height="56" rx="9" fill="#eaf3f2" stroke="#0f5f5c" stroke-width="1.4"/>
+<text x="100" y="124" text-anchor="middle" class="h">需求</text>
+<rect x="190" y="90" width="120" height="56" rx="9" fill="#eaf3f2" stroke="#0f5f5c" stroke-width="1.4"/>
+<text x="250" y="124" text-anchor="middle" class="h">设计</text>
+<rect x="340" y="90" width="120" height="56" rx="9" fill="#f9efe4" stroke="#c47f3d" stroke-width="1.4"/>
+<text x="400" y="124" text-anchor="middle" class="h">编码</text>
+<rect x="490" y="90" width="120" height="56" rx="9" fill="#f9efe4" stroke="#c47f3d" stroke-width="1.4"/>
+<text x="550" y="124" text-anchor="middle" class="h">测试</text>
+<rect x="640" y="90" width="120" height="56" rx="9" fill="#f9efe4" stroke="#c47f3d" stroke-width="1.4"/>
+<text x="700" y="124" text-anchor="middle" class="h">评审</text>
+<rect x="790" y="90" width="90" height="56" rx="9" fill="#e6f0e9" stroke="#4d6b50" stroke-width="1.4"/>
+<text x="835" y="124" text-anchor="middle" class="h">运维</text>
+<line x1="162" y1="118" x2="186" y2="118" stroke="#7a8a89" stroke-width="1.5" marker-end="url(#arw)"/>
+<line x1="312" y1="118" x2="336" y2="118" stroke="#7a8a89" stroke-width="1.5" marker-end="url(#arw)"/>
+<line x1="462" y1="118" x2="486" y2="118" stroke="#7a8a89" stroke-width="1.5" marker-end="url(#arw)"/>
+<line x1="612" y1="118" x2="636" y2="118" stroke="#7a8a89" stroke-width="1.5" marker-end="url(#arw)"/>
+<line x1="762" y1="118" x2="786" y2="118" stroke="#7a8a89" stroke-width="1.5" marker-end="url(#arw)"/>
+<rect x="40" y="170" width="120" height="86" rx="8" fill="#fafaf8" stroke="#d8e2e1"/>
+<text x="100" y="196" text-anchor="middle" class="s">边界情况枚举</text><text x="100" y="218" text-anchor="middle" class="s">验收标准生成</text>
+<rect x="190" y="170" width="120" height="86" rx="8" fill="#fafaf8" stroke="#d8e2e1"/>
+<text x="250" y="196" text-anchor="middle" class="s">方案对比</text><text x="250" y="218" text-anchor="middle" class="s">风险清单</text>
+<rect x="340" y="170" width="120" height="86" rx="8" fill="#fafaf8" stroke="#d8e2e1"/>
+<text x="400" y="196" text-anchor="middle" class="s">Agent 式实现</text><text x="400" y="218" text-anchor="middle" class="s">补全样板</text>
+<rect x="490" y="170" width="120" height="86" rx="8" fill="#fafaf8" stroke="#d8e2e1"/>
+<text x="550" y="196" text-anchor="middle" class="s">用例生成</text><text x="550" y="218" text-anchor="middle" class="s">模糊测试输入</text>
+<rect x="640" y="170" width="120" height="86" rx="8" fill="#fafaf8" stroke="#d8e2e1"/>
+<text x="700" y="196" text-anchor="middle" class="s">机器首轮审查</text><text x="700" y="218" text-anchor="middle" class="s">人做二审</text>
+<rect x="790" y="170" width="90" height="86" rx="8" fill="#fafaf8" stroke="#d8e2e1"/>
+<text x="835" y="196" text-anchor="middle" class="s">日志解读</text><text x="835" y="218" text-anchor="middle" class="s">复盘草稿</text>
+<rect x="40" y="286" width="840" height="96" rx="12" fill="#e6f0e9" stroke="#4d6b50" stroke-width="1.3"/>
+<text x="64" y="316" class="h">铁律</text>
+<text x="64" y="344" class="b">合并代码、发布上线、事故定级这类不可逆决策，永远留给人——AI 可以把证据准备到极致，按钮必须人按。</text>
+<text x="64" y="368" class="s">CI 里的 AI 审查标注「仅供参考」，把误报率作为选型与调参的核心指标。</text>
+
+</svg>

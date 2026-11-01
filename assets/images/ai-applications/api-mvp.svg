@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400">
+<defs><marker id="arw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7a8a89"/></marker></defs>
+<style>
+text{font-family:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans SC',sans-serif;fill:#1f2d2c}
+.h{font-size:16px;font-weight:600}
+.b{font-size:13px}
+.s{font-size:11.5px;fill:#5b6b6a}
+</style>
+
+<text x="450" y="52" text-anchor="middle" class="h">AI 功能的最小闭环：五个部件一个都不能少</text>
+<rect x="40" y="110" width="140" height="86" rx="10" fill="#eaf3f2" stroke="#0f5f5c" stroke-width="1.4"/>
+<text x="110" y="146" text-anchor="middle" class="h">① 输入</text><text x="110" y="170" text-anchor="middle" class="s">采集与基础校验</text>
+<rect x="220" y="110" width="150" height="86" rx="10" fill="#eaf3f2" stroke="#0f5f5c" stroke-width="1.4"/>
+<text x="295" y="140" text-anchor="middle" class="h">② 提示组装</text><text x="295" y="162" text-anchor="middle" class="s">系统提示 + 输入</text><text x="295" y="180" text-anchor="middle" class="s">+ 必要上下文</text>
+<rect x="410" y="110" width="140" height="86" rx="10" fill="#f9efe4" stroke="#c47f3d" stroke-width="1.4"/>
+<text x="480" y="146" text-anchor="middle" class="h">③ 模型调用</text><text x="480" y="170" text-anchor="middle" class="s">超时·限流·重试</text>
+<rect x="590" y="110" width="140" height="86" rx="10" fill="#eaf3f2" stroke="#0f5f5c" stroke-width="1.4"/>
+<text x="660" y="140" text-anchor="middle" class="h">④ 输出校验</text><text x="660" y="162" text-anchor="middle" class="s">格式解析·敏感词</text><text x="660" y="180" text-anchor="middle" class="s">空值处理</text>
+<rect x="770" y="110" width="100" height="86" rx="10" fill="#e6f0e9" stroke="#4d6b50" stroke-width="1.4"/>
+<text x="820" y="146" text-anchor="middle" class="h">⑤ 兜底</text><text x="820" y="170" text-anchor="middle" class="s">降级人工</text><text x="820" y="188" text-anchor="middle" class="s">或模板</text>
+<line x1="182" y1="153" x2="216" y2="153" stroke="#7a8a89" stroke-width="1.5" marker-end="url(#arw)"/>
+<line x1="372" y1="153" x2="406" y2="153" stroke="#7a8a89" stroke-width="1.5" marker-end="url(#arw)"/>
+<line x1="552" y1="153" x2="586" y2="153" stroke="#7a8a89" stroke-width="1.5" marker-end="url(#arw)"/>
+<line x1="732" y1="153" x2="766" y2="153" stroke="#7a8a89" stroke-width="1.5" marker-end="url(#arw)"/>
+<rect x="40" y="240" width="830" height="130" rx="12" fill="#fafaf8" stroke="#d8e2e1"/>
+<text x="64" y="272" class="h">失败是常态，闭环的意义在于「失败也不难看」</text>
+<text x="64" y="302" class="b">· 每个部件都要有降级路径：调用失败 → 重试 → 模板回复 → 人工接管</text>
+<text x="64" y="330" class="b">· API Key 只能放服务端；按用户做配额与熔断，防止成本失控</text>
+<text x="64" y="356" class="s">先让闭环跑通，再谈优化——跑不通的智能，没有任何价值。</text>
+
+</svg>

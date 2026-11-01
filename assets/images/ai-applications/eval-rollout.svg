@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 396">
+<defs><marker id="arw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7a8a89"/></marker></defs>
+<style>
+text{font-family:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans SC',sans-serif;fill:#1f2d2c}
+.h{font-size:16px;font-weight:600}
+.b{font-size:13px}
+.s{font-size:11.5px;fill:#5b6b6a}
+</style>
+
+<text x="450" y="52" text-anchor="middle" class="h">A/B 测试与灰度上线：用数据代替感觉</text>
+<rect x="60" y="90" width="160" height="70" rx="10" fill="#eaf3f2" stroke="#0f5f5c" stroke-width="1.4"/>
+<text x="140" y="120" text-anchor="middle" class="h">新功能版本</text><text x="140" y="144" text-anchor="middle" class="s">与线上旧版并存</text>
+<line x1="222" y1="112" x2="330" y2="96" stroke="#0f5f5c" stroke-width="1.5" marker-end="url(#arw)"/>
+<line x1="222" y1="138" x2="330" y2="154" stroke="#7a8a89" stroke-width="1.5" marker-end="url(#arw)"/>
+<rect x="336" y="66" width="200" height="60" rx="10" fill="#f9efe4" stroke="#c47f3d" stroke-width="1.4"/>
+<text x="436" y="92" text-anchor="middle" class="b">B 组 · 50% 用户</text><text x="436" y="114" text-anchor="middle" class="s">点击率 72%</text>
+<rect x="336" y="134" width="200" height="60" rx="10" fill="#f2efe9" stroke="#a3926b" stroke-width="1.4"/>
+<text x="436" y="160" text-anchor="middle" class="b">A 组 · 50% 用户</text><text x="436" y="182" text-anchor="middle" class="s">点击率 52%</text>
+<line x1="540" y1="96" x2="600" y2="96" stroke="#7a8a89" stroke-width="1.5" marker-end="url(#arw)"/>
+<rect x="606" y="66" width="240" height="128" rx="10" fill="#fafaf8" stroke="#d8e2e1"/>
+<text x="626" y="96" class="h">判定与放量</text>
+<text x="626" y="124" class="b">· 差异是否显著（样本量）</text>
+<text x="626" y="150" class="b">· 看护指标没有恶化</text>
+<text x="626" y="176" class="b">· 逐级放量：1% → 10% → 全量</text>
+<rect x="60" y="240" width="786" height="120" rx="12" fill="#fafaf8" stroke="#d8e2e1"/>
+<text x="84" y="270" class="h">灰度上线的四个阶段</text>
+<text x="84" y="300" class="b">内部白名单 → 小流量灰度 → 扩量观察 → 全量发布；每一级都有明确的「进入条件」与「回退条件」。</text>
+<text x="84" y="330" class="s">同时改提示词、模型和参数是大忌——一次只改一个变量，否则涨跌都说不清原因。</text>
+
+</svg>

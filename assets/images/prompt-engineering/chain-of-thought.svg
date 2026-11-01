@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 420">
+<defs><marker id="arw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7a8a89"/></marker></defs>
+<style>
+text{font-family:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans SC',sans-serif;fill:#1f2d2c}
+.h{font-size:16px;font-weight:600}
+.b{font-size:13px}
+.s{font-size:11.5px;fill:#5b6b6a}
+.dim{fill:#5b6b6a}
+.w{fill:#ffffff}
+</style>
+
+<text x="450" y="52" text-anchor="middle" class="h">思维链：把「直接给答案」变成「先分步推理」</text>
+<rect x="60" y="84" width="370" height="270" rx="12" fill="#f7e9e7" stroke="#9e3b32" stroke-width="1.3"/>
+<text x="245" y="118" text-anchor="middle" class="h">直接问</text>
+<rect x="90" y="140" width="310" height="52" rx="9" fill="#fff" stroke="#d8e2e1"/>
+<text x="245" y="172" text-anchor="middle" class="b">问：食堂原有 23 个苹果，用掉 20 个又买 6 个，现有几个？</text>
+<rect x="90" y="208" width="310" height="52" rx="9" fill="#fff" stroke="#d8e2e1"/>
+<text x="245" y="240" text-anchor="middle" class="b">答：27 个　✗（跳步心算出错）</text>
+<text x="245" y="308" text-anchor="middle" class="s">一步到位，中间步骤全靠脑补</text>
+<rect x="470" y="84" width="370" height="270" rx="12" fill="#e6f0e9" stroke="#4d6b50" stroke-width="1.3"/>
+<text x="655" y="118" text-anchor="middle" class="h">提示加一句「请一步步思考」</text>
+<rect x="500" y="140" width="310" height="34" rx="8" fill="#fff" stroke="#d8e2e1"/><text x="655" y="162" text-anchor="middle" class="b">第一步：23 − 20 = 3（用掉后剩 3 个）</text>
+<rect x="500" y="182" width="310" height="34" rx="8" fill="#fff" stroke="#d8e2e1"/><text x="655" y="204" text-anchor="middle" class="b">第二步：3 + 6 = 9（又买了 6 个）</text>
+<rect x="500" y="224" width="310" height="34" rx="8" fill="#fff" stroke="#d8e2e1"/><text x="655" y="246" text-anchor="middle" class="b">第三步：核对问题，答「现有 9 个」✓</text>
+<text x="655" y="308" text-anchor="middle" class="s">每一步写在明面上，错了能定位、能纠正</text>
+<text x="450" y="396" text-anchor="middle" class="b">适用：数学、多条件判断、逻辑推理；代价是输出更长、更慢</text>
+
+</svg>

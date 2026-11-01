@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400">
+<defs><marker id="arw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7a8a89"/></marker></defs>
+<style>
+text{font-family:-apple-system,'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans SC',sans-serif;fill:#1f2d2c}
+.h{font-size:16px;font-weight:600}
+.b{font-size:13px}
+.s{font-size:11.5px;fill:#5b6b6a}
+</style>
+
+<text x="450" y="50" text-anchor="middle" class="h">混合检索 + 重排：三道闸门，各管一件事</text>
+<rect x="60" y="120" width="130" height="66" rx="10" fill="#eaf3f2" stroke="#0f5f5c" stroke-width="1.4"/>
+<text x="125" y="148" text-anchor="middle" class="h">用户查询</text><text x="125" y="170" text-anchor="middle" class="s">「E-4021 怎么解决」</text>
+<line x1="192" y1="140" x2="240" y2="112" stroke="#7a8a89" stroke-width="1.5" marker-end="url(#arw)"/>
+<line x1="192" y1="166" x2="240" y2="196" stroke="#7a8a89" stroke-width="1.5" marker-end="url(#arw)"/>
+<rect x="246" y="72" width="180" height="66" rx="10" fill="#f2efe9" stroke="#7a6340" stroke-width="1.4"/>
+<text x="336" y="99" text-anchor="middle" class="h">关键词 BM25</text><text x="336" y="121" text-anchor="middle" class="s">精确匹配符号/型号 ✓</text>
+<rect x="246" y="170" width="180" height="66" rx="10" fill="#eaf3f2" stroke="#0f5f5c" stroke-width="1.4"/>
+<text x="336" y="197" text-anchor="middle" class="h">向量语义</text><text x="336" y="219" text-anchor="middle" class="s">同义改写也能召回 ✓</text>
+<line x1="428" y1="105" x2="474" y2="140" stroke="#7a8a89" stroke-width="1.5" marker-end="url(#arw)"/>
+<line x1="428" y1="203" x2="474" y2="168" stroke="#7a8a89" stroke-width="1.5" marker-end="url(#arw)"/>
+<rect x="480" y="120" width="160" height="66" rx="10" fill="#f9efe4" stroke="#c47f3d" stroke-width="1.4"/>
+<text x="560" y="147" text-anchor="middle" class="h">RRF 融合</text><text x="560" y="169" text-anchor="middle" class="s">合并两路排名 top-50</text>
+<line x1="642" y1="153" x2="688" y2="153" stroke="#7a8a89" stroke-width="1.5" marker-end="url(#arw)"/>
+<rect x="694" y="120" width="170" height="66" rx="10" fill="#e6f0e9" stroke="#4d6b50" stroke-width="1.4"/>
+<text x="779" y="147" text-anchor="middle" class="h">Rerank 精排</text><text x="779" y="169" text-anchor="middle" class="s">逐对打分取 top-5</text>
+<rect x="130" y="260" width="640" height="96" rx="12" fill="#fafaf8" stroke="#d8e2e1"/>
+<text x="154" y="290" class="h">分工口诀</text>
+<text x="154" y="318" class="b">向量召回管「别漏」· Rerank 管「排对」· top-k 控制「别多」。粗排压数量，精排提质量。</text>
+<text x="154" y="342" class="s">Rerank 对每个候选都要跑一次推理，候选数控制在 100 以内，否则延迟明显上升。</text>
+
+</svg>
