@@ -793,6 +793,7 @@ function renderLesson(view, slug, lessonId) {
 function sectionHTML(sec) {
   let html = '<div class="sec">';
   if (sec.h) html += `<h3>${esc(sec.h)}</h3>`;
+  if (sec.img) html += `<figure class="lesson-fig"><img src="${esc(sec.img)}" alt="${esc(sec.cap || sec.h || '课程配图')}" loading="lazy">${sec.cap ? `<figcaption>${esc(sec.cap)}</figcaption>` : ''}</figure>`;
   if (sec.p) html += `<p>${esc(sec.p)}</p>`;
   if (sec.list) html += `<ul>${sec.list.map(x => `<li>${esc(x)}</li>`).join('')}</ul>`;
   if (sec.code) html += `<pre><code>${esc(sec.code)}</code></pre>`;
