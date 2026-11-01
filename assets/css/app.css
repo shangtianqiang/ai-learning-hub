@@ -231,7 +231,7 @@
 .callout.warn { background: var(--warn-soft); border-left-color: var(--warn); color: #6d4511; }
 .callout b { font-weight: 700; }
 .lesson-fig { margin: 14px 0 6px; }
-.lesson-fig img { display: block; max-width: 100%; height: auto; border: 1px solid var(--line); border-radius: var(--r-sm); background: #fff; }
+.lesson-fig img { display: block; width: 100%; aspect-ratio: 2 / 1; object-fit: contain; border: 1px solid var(--line); border-radius: var(--r-sm); background: #fff; }
 .lesson-fig figcaption { margin-top: 7px; font-size: 11.5px; color: var(--faint); line-height: 1.7; text-align: center; }
 
 .points { border-left: 2px solid var(--brand); background: var(--paper-2); padding: 14px 18px; margin: 4px 0 24px; border-radius: 0 var(--r-sm) var(--r-sm) 0; }
