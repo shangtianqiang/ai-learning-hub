@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#0f5f5c">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230f5f5c'/%3E%3Ctext x='16' y='23' font-size='19' font-family='sans-serif' font-weight='700' fill='white' text-anchor='middle'%3E%E6%99%BA%3C/text%3E%3C/svg%3E">
 <title>智学 AI · 从概念到落地，系统学会人工智能</title>
-<meta name="description" content="智学 AI 是一套通用 AI 学习平台：6 门系统课程、51 节课、102 道随堂题，覆盖 AI 基础、机器学习、深度学习、大模型、提示工程与 AI 应用。">
+<meta name="description" content="智学 AI 是一套通用 AI 学习平台：12 门系统课程、105 节课、210 道随堂题，覆盖 AI 基础、机器学习、深度学习、大模型、提示工程、AI 应用、Agent、MCP 与 Agent 工程、RAG、多模态、AI 安全与 AI 辅助编程。">
 <link rel="stylesheet" href="assets/css/base.css">
 <link rel="stylesheet" href="assets/css/landing.css">
 </head>
@@ -38,7 +38,7 @@
 <section class="hero">
   <div class="container hero-inner">
     <div>
-      <div class="hero-facts"><span><b>6</b> 门课程</span><i>/</i><span><b>51</b> 课时</span><i>/</i><span><b>102</b> 道测验</span><i>/</i><span><b>4</b> 条路径</span></div>
+      <div class="hero-facts"><span><b>12</b> 门课程</span><i>/</i><span><b>105</b> 课时</span><i>/</i><span><b>210</b> 道测验</span><i>/</i><span><b>6</b> 条路径</span></div>
       <h1>把 AI 真正<span class="mark">学会</span>，<br>而不只是看过。</h1>
       <p class="lead">
         从基础概念到落地应用，一条完整的 AI 学习链路。每节课配随堂测验，学完立刻检验；
@@ -54,7 +54,7 @@
     <div class="hero-card">
       <div class="hc-head"><span class="t">学习概览 <em class="sample">示例</em></span><span class="s">第 01 章 · AI 基础</span></div>
       <div class="hc-prog">
-        <div class="row"><span class="n">46<small>%</small></span><span class="s">23 / 51 节 · 连续 6 天</span></div>
+        <div class="row"><span class="n">46<small>%</small></span><span class="s">23 / 105 节 · 连续 6 天</span></div>
         <div class="progress"><i style="width:46%"></i></div>
       </div>
       <div class="hc-item"><span class="no">01.01</span><span class="nm">什么是人工智能</span><span class="st done">已完成</span></div>
@@ -67,10 +67,10 @@
 <!-- ================= 数据条 ================= -->
 <section class="stat-strip">
   <div class="container">
-    <div class="stat-item"><div class="v">6</div><div class="l">系统课程</div></div>
-    <div class="stat-item"><div class="v">51</div><div class="l">结构化课时</div></div>
-    <div class="stat-item"><div class="v">102</div><div class="l">随堂测验题</div></div>
-    <div class="stat-item"><div class="v">4</div><div class="l">学习路径</div></div>
+    <div class="stat-item"><div class="v">12</div><div class="l">系统课程</div></div>
+    <div class="stat-item"><div class="v">105</div><div class="l">结构化课时</div></div>
+    <div class="stat-item"><div class="v">210</div><div class="l">随堂测验题</div></div>
+    <div class="stat-item"><div class="v">6</div><div class="l">学习路径</div></div>
   </div>
 </section>
 
@@ -156,7 +156,7 @@
 <footer class="site-footer">
   <div class="container between">
     <div>智学 AI · AI LEARNING HUB — 通用人工智能学习平台</div>
-    <div>6 门课程 / 51 节课 / 102 道测验 / 4 条路径 · 进度保存在本地浏览器</div>
+    <div>12 门课程 / 105 节课 / 210 道测验 / 6 条路径 · 进度保存在本地浏览器</div>
   </div>
 </footer>
 
@@ -167,7 +167,7 @@ const dot = c => `<i class="cdot" style="background:${c.color}"></i>`;
 
 document.getElementById('catGrid').innerHTML = CATEGORIES.map((c, i) => `
   <a class="cat-card" href="app.html#/courses?cat=${c.id}">
-    <div class="ct-top"><span class="no">0${i + 1}</span>${dot(c)}</div>
+    <div class="ct-top"><span class="no">${String(i + 1).padStart(2, "0")}</span>${dot(c)}</div>
     <h3>${c.name}</h3>
     <p>${c.desc}</p>
     <div class="ct-foot"><span>${c.courses} 门课程 · ${c.lessons} 节课</span><span class="arrow">→</span></div>
@@ -191,7 +191,7 @@ document.getElementById('courseGrid').innerHTML = COURSES.map(c => `
 document.getElementById('pathGrid').innerHTML = PATHS.map((p, i) => `
   <div class="path-card">
     <div class="pc-top">
-      <h3><span class="no">0${i + 1}</span>${p.name}</h3>
+      <h3><span class="no">${String(i + 1).padStart(2, "0")}</span>${p.name}</h3>
       <span class="pc-weeks">${p.weeks} 周</span>
     </div>
     <div class="pc-desc">${p.desc}</div>

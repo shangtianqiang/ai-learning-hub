@@ -38,7 +38,13 @@ const I = {
   refresh: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v5h-5"/></svg>',
   info: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>',
   award: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="m8.5 14-1.5 7 5-2.5 5 2.5-1.5-7"/></svg>',
-  timeline: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h10M4 12h16M4 18h7"/><circle cx="18" cy="6" r="2"/><circle cx="14" cy="18" r="2"/></svg>'
+  timeline: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h10M4 12h16M4 18h7"/><circle cx="18" cy="6" r="2"/><circle cx="14" cy="18" r="2"/></svg>',
+  agent: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="9" width="14" height="10" rx="2.5"/><path d="M9.5 14h.01M14.5 14h.01M12 9V5.5"/><circle cx="12" cy="4" r="1.3"/></svg>',
+  plug: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3.5V8M15 3.5V8"/><path d="M7 8h10v2.5a5 5 0 0 1-5 5 5 5 0 0 1-5-5z"/><path d="M12 15.5V21"/></svg>',
+  database: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5.5" rx="8" ry="3"/><path d="M4 5.5v13c0 1.7 3.6 3 8 3s8-1.3 8-3v-13"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg>',
+  eye: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 12S6 5.8 12 5.8 21.5 12 21.5 12 18 18.2 12 18.2 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg>',
+  shield: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 19.5 6v5.5c0 4.6-3.2 7.6-7.5 9-4.3-1.4-7.5-4.4-7.5-9V6z"/><path d="m9 11.5 2.2 2.2L15.5 9.5"/></svg>',
+  code: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m8.5 8-4 4 4 4M15.5 8l4 4-4 4M13.5 5.5l-3 13"/></svg>'
 };
 
 function ic(name, size = 18, color) {
@@ -298,7 +304,7 @@ function renderHome(view) {
       <div class="cat-tiles">
         ${CATEGORIES.map((c, i) => `
           <a class="cat-tile" href="#/courses?cat=${c.id}">
-            <span class="no">0${i + 1}</span>
+            <span class="no">${String(i + 1).padStart(2, '0')}</span>
             <div class="ct-main">
               <div class="t">${c.name}</div>
               <div class="d">${c.desc}</div>
@@ -366,7 +372,7 @@ function renderCourses(view, query) {
   view.innerHTML = `
     <div class="page-head">
       <h1 class="ph-title">课程库</h1>
-      <p class="ph-sub">6 门课程、${TOTAL_LESSONS} 节课，覆盖从概念到落地的完整链路。按分类与难度筛选，或直接搜索关键词。</p>
+      <p class="ph-sub">12 门课程、${TOTAL_LESSONS} 节课，覆盖从概念到落地的完整链路。按分类与难度筛选，或直接搜索关键词。</p>
     </div>
 
     <div class="filter-bar">
@@ -1479,7 +1485,7 @@ function renderProgress(view) {
         <div class="c-title">结 业 证 书</div>
         <div class="c-name">智学 AI · 全课程通关学员</div>
         <div class="c-line">
-          已完成 <b>6 门课程、${TOTAL_LESSONS} 节课、${TOTAL_QUIZ} 道测验</b> 的全部学习与练习，<br>
+          已完成 <b>12 门课程、${TOTAL_LESSONS} 节课、${TOTAL_QUIZ} 道测验</b> 的全部学习与练习，<br>
           经随堂测验与结课测验校验，达到 <b>${lv.level} ${lv.name}</b> 能力等级。
         </div>
         <div class="c-date">${todayStr()} · 智学 AI LEARNING HUB</div>
